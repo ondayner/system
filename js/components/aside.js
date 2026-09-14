@@ -49,67 +49,67 @@ export function renderAside(moduloActivo = '') {
       icono: 'fa-shield-halved',
       link: '/system/views/administracion/admin.html',
       sublinks: [
-        { nombre: 'Auditoría', url: '/views/administracion/auditoria/auditoria.html' },
-        { nombre: 'Empleados', url: '/views/administracion/empleados/empleados.html' },
-        { nombre: 'Usuarios', url: '/views/administracion/usuarios/usuarios.html' }
+        { nombre: 'Auditoría', url: '/system/views/administracion/auditoria/auditoria.html' },
+        { nombre: 'Empleados', url: '/system/views/administracion/empleados/empleados.html' },
+        { nombre: 'Usuarios', url: '/system/views/administracion/usuarios/usuarios.html' }
       ]
     },
     {
       id: 'contabilidad',
       nombre: 'Contabilidad',
       icono: 'fa-calculator',
-      link: '/views/contabilidad/menu.html',
+      link: '/system/views/contabilidad/menu.html',
       sublinks: [
-        { nombre: 'Asientos contables', url: '/views/contabilidad/asientosContables/asientos_contables.html' },
-        { nombre: 'Balance comprobación', url: '/views/contabilidad/balance/balance.html' },
-        { nombre: 'Detalle asientos', url: '/views/contabilidad/detalleAsientos/detalle_asientos.html' },
-        { nombre: 'Libro diario', url: '/views/contabilidad/libro/libro_diario.html' },
-        { nombre: 'Plan de cuentas', url: '/views/contabilidad/planCuentas/plan_cuentas.html' },
-        { nombre: 'Tipos de cuenta', url: '/views/contabilidad/tiposCuentas/tipos_cuentas.html' }
+        { nombre: 'Asientos contables', url: '/system/views/contabilidad/asientosContables/asientos_contables.html' },
+        { nombre: 'Balance comprobación', url: '/system/views/contabilidad/balance/balance.html' },
+        { nombre: 'Detalle asientos', url: '/system/views/contabilidad/detalleAsientos/detalle_asientos.html' },
+        { nombre: 'Libro diario', url: '/system/views/contabilidad/libro/libro_diario.html' },
+        { nombre: 'Plan de cuentas', url: '/system/views/contabilidad/planCuentas/plan_cuentas.html' },
+        { nombre: 'Tipos de cuenta', url: '/system/views/contabilidad/tiposCuentas/tipos_cuentas.html' }
       ]
     },
     {
       id: 'facturacion',
       nombre: 'Facturación',
       icono: 'fa-file-invoice-dollar',
-      link: '/views/facturacion/facturacion.html',
+      link: '/system/views/facturacion/facturacion.html',
       sublinks: [
-        { nombre: 'Factura cliente', url: '/views/facturacion/facturaCliente/facturas.html' },
-        { nombre: 'Pagos', url: '/views/facturacion/pagos/pagos.html' }
+        { nombre: 'Factura cliente', url: '/system/views/facturacion/facturaCliente/facturas.html' },
+        { nombre: 'Pagos', url: '/system/views/facturacion/pagos/pagos.html' }
       ]
     },
     {
       id: 'finanzas',
       nombre: 'Finanzas',
       icono: 'fa-wallet',
-      link: '/views/finanzas/finanzas.html',
+      link: '/system/views/finanzas/finanzas.html',
       sublinks: [
-        { nombre: 'Bancos', url: '/views/finanzas/bancos/bancos.html' },
-        { nombre: 'Tasas de cambio', url: '/views/finanzas/tasas/tasas.html' }
+        { nombre: 'Bancos', url: '/system/views/finanzas/bancos/bancos.html' },
+        { nombre: 'Tasas de cambio', url: '/system/views/finanzas/tasas/tasas.html' }
       ]
     },
     {
       id: 'inventario',
       nombre: 'Inventario',
       icono: 'fa-boxes-stacked',
-      link: '/views/inventario/inventario.html',
+      link: '/system/views/inventario/inventario.html',
       sublinks: [
-        { nombre: 'Inventario General', url: '/views/inventario/inventario/inventario_general.html' },
-        { nombre: 'Proveedores', url: '/views/inventario/proveedores/proveedores.html' }
+        { nombre: 'Inventario General', url: '/system/views/inventario/inventario/inventario_general.html' },
+        { nombre: 'Proveedores', url: '/system/views/inventario/proveedores/proveedores.html' }
       ]
     },
     {
       id: 'operaciones',
       nombre: 'Operaciones',
       icono: 'fa-gears',
-      link: '/views/operacionesGPS/operaciones.html',
+      link: '/system/views/operacionesGPS/operaciones.html',
       sublinks: [
-        { nombre: 'Clientes', url: '/views/operacionesGPS/clientes/clientes.html' },
-        { nombre: 'Equipos', url: '/views/operacionesGPS/equipos/equipos.html' },
-        { nombre: 'Lineas', url: '/views/operacionesGPS/lineas/lineas.html' },
-        { nombre: 'Monitor', url: '/views/operacionesGPS/monitor/monitor.html' },
-        { nombre: 'Vehículos', url: '/views/operacionesGPS/vehiculos/vehiculos.html' },
-        { nombre: 'Vendedor', url: '/views/operacionesGPS/vendedores/vendedores.html' }
+        { nombre: 'Clientes', url: '/system/views/operacionesGPS/clientes/clientes.html' },
+        { nombre: 'Equipos', url: '/system/views/operacionesGPS/equipos/equipos.html' },
+        { nombre: 'Lineas', url: '/system/views/operacionesGPS/lineas/lineas.html' },
+        { nombre: 'Monitor', url: '/system/views/operacionesGPS/monitor/monitor.html' },
+        { nombre: 'Vehículos', url: '/system/views/operacionesGPS/vehiculos/vehiculos.html' },
+        { nombre: 'Vendedor', url: '/system/views/operacionesGPS/vendedores/vendedores.html' }
       ]
     }
   ];
