@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GALAX GPS - Menú Facturación</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../../../css/style.css">
+</head>
+<body class="bg-slate-950 text-slate-100 flex h-screen overflow-hidden transition-colors">
+  
+  <div id="app-aside"></div>
+
+  <div class="flex-1 flex flex-col min-w-0 overflow-hidden">
+    <header class="h-16 bg-slate-900 border-b border-slate-800 flex items-center justify-end px-4 md:px-6 shrink-0 relative">
+      <div class="md:hidden w-10"></div>
+      <div class="flex items-center gap-1 md:gap-3 text-slate-400 ml-auto">
+        <button class="p-2.5 hover:bg-slate-800 hover:text-white rounded-xl transition-colors"><i class="fa-solid fa-rotate text-sm"></i></button>
+        <button class="p-2.5 hover:bg-slate-800 hover:text-white rounded-xl transition-colors"><i class="fa-solid fa-download text-sm"></i></button>
+        <button class="p-2.5 hover:bg-slate-800 hover:text-white rounded-xl transition-colors"><i class="fa-solid fa-gear text-sm"></i></button>
+        <button class="p-2.5 hover:bg-slate-800 hover:text-white rounded-xl transition-colors"><i class="fa-solid fa-bell text-sm"></i></button>
+      </div>
+    </header>
+
+    <main class="flex-1 overflow-y-auto p-4 md:p-8 flex flex-col gap-6 bg-slate-950/40">
+      
+      <div class="border-b border-slate-800 pb-4">
+        <h2 class="text-sm font-bold uppercase tracking-wider text-slate-300 flex items-center gap-2">
+          <i class="fa-solid fa-file-invoice-dollar text-amber-500"></i> Menú Facturación
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 h-full justify-center items-center sm:grid-cols-2 lg:grid-cols-2 gap-6 max-w-3xl mx-auto py-6">
+        
+        <!-- Factura Cliente -->
+        <a href="facturaCliente/facturas.html" class="bg-slate-900 border border-slate-800 hover:border-amber-500/50 p-12 rounded-3xl shadow-xl flex flex-col items-center justify-center gap-4 group transition-all">
+          <div class="w-24 h-24 rounded-full bg-slate-950 border border-slate-800 flex items-center justify-center text-amber-400 text-3xl group-hover:scale-110 transition-transform">
+            <i class="fa-solid fa-file-lines"></i>
+          </div>
+          <span class="font-bold text-slate-200 group-hover:text-amber-400 text-sm transition-colors">Factura cliente</span>
+        </a>
+
+        <!-- Pagos -->
+        <a href="pagos/pagos.html" class="bg-slate-900 border border-slate-800 hover:border-blue-500/50 p-12 rounded-3xl shadow-xl flex flex-col items-center justify-center gap-4 group transition-all">
+          <div class="w-24 h-24 rounded-full bg-slate-950 border border-slate-800 flex items-center justify-center text-blue-400 text-3xl group-hover:scale-110 transition-transform">
+            <i class="fa-solid fa-credit-card"></i>
+          </div>
+          <span class="font-bold text-slate-200 group-hover:text-blue-400 text-sm transition-colors">Pagos</span>
+        </a>
+
+      </div>
+    </main>
+  </div>
+
+  <script type="module">
+    import { renderAside } from '../../../js/components/aside.js';
+    renderAside('facturacion');
+  </script>
+</body>
+</html>

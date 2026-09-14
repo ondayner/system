@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GALAX GPS - Módulo Vendedores / Instaladores</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../../../css/style.css">
+</head>
+<body class="bg-slate-950 text-slate-100 flex h-screen overflow-hidden transition-colors">
+  
+  <!-- Contenedor del Aside unificado -->
+  <div id="app-aside"></div>
+
+  <!-- Contenido Principal -->
+  <div class="flex-1 flex flex-col min-w-0 overflow-hidden">
+    
+    <!-- Topbar superior -->
+    <header class="h-16 bg-slate-900 border-b border-slate-800 flex items-center justify-between px-4 md:px-6 shrink-0">
+      <div class="flex items-center gap-2">
+        <button id="btnAbrirAgregar" class="bg-blue-600 hover:bg-blue-500 text-white px-3.5 py-2 rounded-xl text-xs font-semibold transition-colors flex items-center gap-2 shadow-lg shadow-blue-600/20">
+          <i class="fa-solid fa-user-plus"></i> Nuevo Vendedor
+        </button>
+        <button id="btnAbrirEditar" class="bg-slate-800 hover:bg-slate-700 text-slate-200 px-3.5 py-2 rounded-xl text-xs font-semibold transition-colors flex items-center gap-2 border border-slate-700">
+          <i class="fa-solid fa-pen-to-square text-blue-400"></i> Editar
+        </button>
+        <button id="btnDetalles" class="bg-slate-800 hover:bg-slate-700 text-slate-200 px-3.5 py-2 rounded-xl text-xs font-semibold transition-colors flex items-center gap-2 border border-slate-700">
+          <i class="fa-solid fa-list-check text-amber-400"></i> Detalles / Equipos
+        </button>
+      </div>
+
+      <div class="flex items-center gap-1 md:gap-3 text-slate-400">
+        <button id="btnActualizarHeader" class="p-2.5 hover:bg-slate-800 hover:text-white rounded-xl transition-colors" title="Actualizar Datos"><i class="fa-solid fa-rotate text-sm"></i></button>
+      </div>
+    </header>
+
+    <!-- Cuerpo principal -->
+    <main class="flex-1 overflow-y-auto p-4 md:p-6 flex flex-col gap-4 bg-slate-950/40 min-w-0">
+      
+      <!-- Panel de Filtro de Búsqueda -->
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-lg flex flex-col gap-4">
+        <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+          <h2 class="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-2">
+            <i class="fa-solid fa-user-tie text-blue-500"></i> Control de Vendedores e Instaladores
+          </h2>
+          <span id="contadorRegistros" class="text-xs font-mono bg-blue-500/10 text-blue-400 px-2.5 py-1 rounded-lg border border-blue-500/20">Cant : 0</span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 text-xs">
+          <div>
+            <label class="block text-slate-400 mb-1 font-semibold">Buscador por Nombre :</label>
+            <div class="relative">
+              <span class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-slate-500">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </span>
+              <input type="text" id="inputBuscador" placeholder="Escriba el nombre del vendedor..." class="w-full bg-slate-950 border border-slate-800 rounded-xl pl-9 pr-3 py-2 text-slate-200 focus:outline-none focus:border-blue-500 font-mono">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tabla de Vendedores -->
+      <div class="flex-1 bg-slate-900 border border-slate-800 rounded-2xl shadow-xl overflow-hidden flex flex-col min-h-[350px] min-w-0">
+        <div class="flex-1 overflow-auto min-w-0 min-h-0">
+          <table class="w-full text-left text-xs whitespace-nowrap">
+            <thead class="bg-slate-950 text-slate-400 uppercase font-semibold sticky top-0 border-b border-slate-800 z-10">
+              <tr>
+                <th class="p-3.5 border-r border-slate-800/50">ID</th>
+                <th class="p-3.5 border-r border-slate-800/50">Vendedor / Técnico</th>
+                <th class="p-3.5 border-r border-slate-800/50 text-center">Cantidad de Vehículos</th>
+                <th class="p-3.5 border-r border-slate-800/50 text-center">Cantidad de Clientes</th>
+                <th class="p-3.5 border-r border-slate-800/50 text-center">Vehículos Vencidos</th>
+                <th class="p-3.5 text-center">Vehículos Solvente</th>
+              </tr>
+            </thead>
+            <tbody id="tablaVendedoresBody" class="divide-y divide-slate-800/60">
+              <!-- Renderizado dinámico -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- MODAL: Agregar / Editar Vendedor -->
+  <div id="modalVendedor" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-slate-800 rounded-2xl w-full max-w-md shadow-2xl overflow-hidden flex flex-col">
+      <div class="px-5 py-4 border-b border-slate-800 flex items-center justify-between bg-slate-950/50">
+        <h3 id="modalTitulo" class="text-sm font-bold text-white flex items-center gap-2">Registrar Vendedor</h3>
+        <button id="btnCerrarModalVendedor" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-base"></i></button>
+      </div>
+      <form id="formVendedor" class="p-5 flex flex-col gap-4 text-xs">
+        <div>
+          <label class="block text-slate-400 mb-1 font-semibold">ID del Vendedor :</label>
+          <input type="number" id="vendedorIdNum" required placeholder="Ej: 50" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-slate-200 focus:outline-none focus:border-blue-500 font-mono">
+          <span id="errorId" class="text-rose-400 text-[10px] mt-1 hidden"></span>
+        </div>
+        <div>
+          <label class="block text-slate-400 mb-1 font-semibold">Nombre del Vendedor / Técnico :</label>
+          <input type="text" id="vendedorNombre" required placeholder="Ej: CARLOS PÉREZ" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-slate-200 focus:outline-none focus:border-blue-500 uppercase">
+          <span id="errorNombre" class="text-rose-400 text-[10px] mt-1 hidden"></span>
+        </div>
+        <div class="flex items-center justify-end gap-2 pt-3 border-t border-slate-800">
+          <button type="button" id="btnCancelarModal" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold transition-colors">Cancelar</button>
+          <button type="submit" class="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold transition-colors shadow-lg shadow-blue-600/20">Guardar Vendedor</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL: Ver Detalles / Lista de Equipos Asignados -->
+  <div id="modalDetalles" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-slate-800 rounded-2xl w-full max-w-3xl shadow-2xl overflow-hidden flex flex-col max-h-[85vh]">
+      <div class="px-5 py-4 border-b border-slate-800 flex items-center justify-between bg-slate-950/50">
+        <h3 id="tituloModalDetalle" class="text-sm font-bold text-white flex items-center gap-2"><i class="fa-solid fa-microchip text-amber-400"></i> Equipos / Vehículos Asignados</h3>
+        <button id="btnCerrarModalDetalles" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-base"></i></button>
+      </div>
+      <div class="p-5 overflow-y-auto flex-1">
+        <table class="w-full text-left text-xs whitespace-nowrap">
+          <thead class="bg-slate-950 text-slate-400 uppercase font-semibold border-b border-slate-800">
+            <tr>
+              <th class="p-2.5">Matrícula</th>
+              <th class="p-2.5">Modelo</th>
+              <th class="p-2.5">Cliente</th>
+              <th class="p-2.5">Estatus Vencimiento</th>
+            </tr>
+          </thead>
+          <tbody id="tablaDetallesEquipos" class="divide-y divide-slate-800/60">
+            <!-- Dinámico -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: Alerta General -->
+  <div id="modalAlerta" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-slate-800 rounded-2xl w-full max-w-sm p-5 shadow-2xl flex flex-col gap-4 text-xs">
+      <h3 class="font-bold text-white flex items-center gap-2 text-sm"><i class="fa-solid fa-triangle-exclamation text-amber-400"></i> Aviso del Sistema</h3>
+      <p id="textoAlertaModal" class="text-slate-300"></p>
+      <div class="flex justify-end pt-2">
+        <button id="btnCerrarAlerta" class="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold transition-colors">Entendido</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Script del Aside y Módulo Vendedores -->
+  <script type="module">
+    import { renderAside } from '../../../js/components/aside.js';
+    renderAside();
+  </script>
+  <script type="module" src="../../../js/operaciones/vendedores.js"></script>
+</body>
+</html>
