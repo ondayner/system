@@ -42,7 +42,7 @@ export function renderAside(moduloActivo = '') {
 
   if (moduloActivo === 'administracion') moduloActivo = 'admin';
 
-  const modulos = [
+const modulos = [
     {
       id: 'admin',
       nombre: 'Administración',
@@ -233,6 +233,6 @@ export function renderAside(moduloActivo = '') {
 window.addEventListener('storage', (event) => {
   if (event.key === 'logout_event') {
     localStorage.removeItem('usuario_galax');
-    window.location.href = 'https://ondayner.github.io/system/index.html';
+    window.location.href = '../../index.html';
   }
 });
