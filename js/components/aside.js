@@ -47,7 +47,7 @@ export function renderAside(moduloActivo = '') {
       id: 'admin',
       nombre: 'Administración',
       icono: 'fa-shield-halved',
-      link: '/views/administracion/admin.html',
+      link: '/system/views/administracion/admin.html',
       sublinks: [
         { nombre: 'Auditoría', url: '/views/administracion/auditoria/auditoria.html' },
         { nombre: 'Empleados', url: '/views/administracion/empleados/empleados.html' },
