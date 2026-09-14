@@ -29,15 +29,15 @@ export function renderAside(moduloActivo = '') {
   if (!asideContainer) return;
 
   const path = window.location.pathname.toLowerCase();
-
+  
   // Auto-detección robusta basada en las carpetas principales
   if (!moduloActivo) {
-    if (path.includes('administracion')) moduloActivo = 'admin';
-    else if (path.includes('contabilidad')) moduloActivo = 'contabilidad';
-    else if (path.includes('facturacion')) moduloActivo = 'facturacion';
-    else if (path.includes('finanzas')) moduloActivo = 'finanzas';
-    else if (path.includes('inventario')) moduloActivo = 'inventario';
-    else if (path.includes('operaciones')) moduloActivo = 'operaciones';
+    if (path.includes('/administracion/')) moduloActivo = 'admin';
+    else if (path.includes('/contabilidad/')) moduloActivo = 'contabilidad';
+    else if (path.includes('/facturacion/')) moduloActivo = 'facturacion';
+    else if (path.includes('/finanzas/')) moduloActivo = 'finanzas';
+    else if (path.includes('/inventario/')) moduloActivo = 'inventario';
+    else if (path.includes('/operacionesgps/')) moduloActivo = 'operaciones';
   }
 
   if (moduloActivo === 'administracion') moduloActivo = 'admin';
@@ -233,6 +233,6 @@ export function renderAside(moduloActivo = '') {
 window.addEventListener('storage', (event) => {
   if (event.key === 'logout_event') {
     localStorage.removeItem('usuario_galax');
-    window.location.href = '/index.html';
+    window.location.href = 'https://ondayner.github.io/system/index.html';
   }
 });
